@@ -1,0 +1,3 @@
+# Out-of-tree build: make -C /lib/modules/$(uname -r)/build M=$(PWD)/driver modules
+obj-m += tinygpu.o
+tinygpu-y := tinygpu_drv.o

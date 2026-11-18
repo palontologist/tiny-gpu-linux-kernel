@@ -22,3 +22,9 @@ Then `sudo nixos-rebuild switch`.
 ## Notes
 - Building from source takes time and disk; consider `nix build` on a fast machine.
 - For driver work, prefer `sched_ext` (scx) and a out-of-tree module via `boot.extraModulePackages`.
+
+## Bandwidth-aware driver proposal
+- Design: [docs/bandwidth-mitigation.md](docs/bandwidth-mitigation.md)
+- Driver scaffold: [driver/](driver/) (out-of-tree char device stub, UAPI, QUERY_CAPS)
+
+This targets effective bandwidth utilization on the Artix-7 + DDR3L tiny-gpu hardware (contiguous/aligned buffers, batched DMA, async submit/wait, capability-driven runtime). Physical DDR bandwidth is a hardware constraint; RTL coalescing/L2 and a stable FPGA transport are required for full benefit.
